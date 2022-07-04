@@ -10,21 +10,19 @@ export class App extends React.Component {
   };
 
   formSubmit = data => {
-    // this.state.contacts.forEach(contact => {
-    //   if (contact.name === data.name) {
-    //     alert(`${data.name} is already in contacts`);
-    //   }
-    //   return;
-    // });
     this.setState(({ contacts }) => {
-      contacts.forEach(contact => {
-        if (contact.name === data.name) {
-          alert(`${data.name} is already in contacts`);
-          return;
-        }
-      });
-      return { contacts: [data, ...contacts] };
+      console.log(this.haveDublicats(contacts, data));
+      if (!this.haveDublicats(contacts, data)) {
+        return { contacts: [data, ...contacts] };
+      } else {
+        alert(`${data.name} is already in contacts`);
+      }
     });
+  };
+
+  haveDublicats = (contacts, data) => {
+    const isDublicate = contacts.some(contact => contact.name === data.name);
+    return isDublicate;
   };
 
   deleteContact = id => {
