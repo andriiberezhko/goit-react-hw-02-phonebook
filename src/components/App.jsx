@@ -11,7 +11,6 @@ export class App extends React.Component {
 
   formSubmit = data => {
     this.setState(({ contacts }) => {
-      console.log(this.haveDublicats(contacts, data));
       if (!this.haveDublicats(contacts, data)) {
         return { contacts: [data, ...contacts] };
       } else {
@@ -21,8 +20,7 @@ export class App extends React.Component {
   };
 
   haveDublicats = (contacts, data) => {
-    const isDublicate = contacts.some(contact => contact.name === data.name);
-    return isDublicate;
+    return contacts.some(contact => contact.name === data.name);
   };
 
   deleteContact = id => {
