@@ -28,6 +28,10 @@ export class Form extends React.Component {
       number: '',
     });
   };
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   render() {
     return (
       <form onSubmit={this.onSubmitForm}>
@@ -61,6 +65,6 @@ export class Form extends React.Component {
   }
 }
 
-Form.propTypes = {
-  onSubmit: PropTypes.func,
-};
+// Form.propTypes = {
+//   onSubmit: PropTypes.func,
+// };
